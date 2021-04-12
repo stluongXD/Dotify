@@ -98,33 +98,44 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvSongCount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
-
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/ibPrev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_previous"
+            android:background="@android:color/transparent"
+            android:foreground="?selectableItemBackground"
             android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:contentDescription="@string/prev_desc"
             />
 
         <ImageButton
-            android:id="@+id/ivPlay"
+            android:id="@+id/ibPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:foreground="?selectableItemBackground"
             android:src="@drawable/ic_play"
-            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:contentDescription="@string/play_desc"
             />
 
         <ImageButton
-            android:id="@+id/ivNext"
+            android:id="@+id/ibNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:foreground="?selectableItemBackground"
             android:src="@drawable/ic_next"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:contentDescription="@string/next_desc"
             />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

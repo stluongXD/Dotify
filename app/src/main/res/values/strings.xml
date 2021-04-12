@@ -7,4 +7,9 @@
     <string name="song_cover_desc">Two planets in the dark blue sky with the words "Seven Lions" at the top left corner</string>
     <string name="song_artist">Seven Lions featuring Tove Lo, Myon, Shane 54</string>
     <string name="song_play_count">%d plays</string>
+    <string name="prev_desc">Plays previous song</string>
+    <string name="play_desc">Plays the song and increase song play count</string>
+    <string name="next_desc">Plays next song</string>
+    <string name="skip_prev">Skipping to previous track</string>
+    <string name="skip_next">Skipping to next track</string>
 </resources>

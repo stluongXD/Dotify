@@ -3,10 +3,7 @@ package edu.uw.stluong.dotify
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -25,13 +22,27 @@ class MainActivity : AppCompatActivity() {
 
         val tvSongPlayCount = findViewById<TextView>(R.id.tvSongCount)
         tvSongPlayCount.text = getString(R.string.song_play_count, numSongPlays)
+
+        val updateSongCount = findViewById<ImageButton>(R.id.ibPlay)
+        updateSongCount.setOnClickListener {
+            incrementPlayCount()
+        }
+
+        findViewById<ImageButton>(R.id.ibPrev).setOnClickListener {
+            displayToast(getString(R.string.skip_prev))
+        }
+
+        findViewById<ImageButton>(R.id.ibNext).setOnClickListener {
+            displayToast(getString(R.string.skip_next))
+        }
     }
 
     /**
-     * Swaps the text between "CHANGE USER" and "APPLY" and allows the user to change the current user of the app
+     * Swaps the text between "CHANGE USER" and "APPLY" and allows the user to change the current
+     * user of the app
      * @param changeUserBtn the button we want to run this function when the button is clicked
      */
-    fun changeUserClick(changeUserBtn: Button) {
+    private fun changeUserClick(changeUserBtn: Button) {
         isEditingUser = !isEditingUser
         val textCurrentUser = findViewById<TextView>(R.id.tCurrentUser)
         val editCurrentUserHandle = findViewById<EditText>(R.id.eCurrentUser)
@@ -48,5 +59,23 @@ class MainActivity : AppCompatActivity() {
             textCurrentUser.visibility = View.VISIBLE
             editCurrentUserHandle.visibility = View.GONE
         }
+    }
+
+    /**
+     * Increments the counter of the times the current song is played. Updates the display on the
+     * screen to reflect the new count
+     */
+    private fun incrementPlayCount() {
+        numSongPlays++
+        val tvSongPlayCount = findViewById<TextView>(R.id.tvSongCount)
+        tvSongPlayCount.text = getString(R.string.song_play_count, numSongPlays)
+    }
+
+    /**
+     * Displays a toast with the given message
+     * @param message The message we want to display on the toast
+     */
+    private fun displayToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
