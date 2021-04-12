@@ -7,11 +7,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private var isEditingUser = false
     private var currentUser = "Baby Yoda"
+    private var numSongPlays = Random.nextInt(100, 10000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         changeUserBtn.setOnClickListener {
             changeUserClick(changeUserBtn)
         }
+
+        val tvSongPlayCount = findViewById<TextView>(R.id.tvSongCount)
+        tvSongPlayCount.text = getString(R.string.song_play_count, numSongPlays)
     }
 
     /**
@@ -33,13 +38,13 @@ class MainActivity : AppCompatActivity() {
 
         if (isEditingUser) {
             editCurrentUserHandle.setText(currentUser)
-            changeUserBtn.text = "APPLY"
+            changeUserBtn.text = getString(R.string.apply)
             textCurrentUser.visibility = View.GONE
             editCurrentUserHandle.visibility = View.VISIBLE
         } else {
             currentUser = editCurrentUserHandle.text.toString()
             textCurrentUser.text = currentUser
-            changeUserBtn.text = "CHANGE USER"
+            changeUserBtn.text = getString(R.string.change_user)
             textCurrentUser.visibility = View.VISIBLE
             editCurrentUserHandle.visibility = View.GONE
         }

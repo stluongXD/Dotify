@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Dotify</string>
+    <string name="placeholder_user">Baby Yoda</string>
+    <string name="change_user">CHANGE USER</string>
+    <string name="song_title">Strangers</string>
+    <string name="apply">APPLY</string>
+    <string name="song_cover_desc">Two planets in the dark blue sky with the words "Seven Lions" at the top left corner</string>
+    <string name="song_artist">Seven Lions featuring Tove Lo, Myon, Shane 54</string>
+    <string name="song_play_count">%d plays</string>
 </resources>

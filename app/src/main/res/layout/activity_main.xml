@@ -4,46 +4,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btChangeUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CHANGE USER"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/eCurrentUser"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/userHeaderLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/eCurrentUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/placeholder_user"
+            android:visibility="gone"
+            android:inputType="text"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tCurrentUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_user"
+            android:ems="10"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/btChangeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_user"
+            android:layout_weight="1"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/userHeaderBarrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="userHeaderLayout" />
+
+    <ImageView
+        android:id="@+id/ivSongCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/strangers_cover_art"
+        app:layout_constraintTop_toBottomOf="@id/userHeaderBarrier"
         app:layout_constraintStart_toStartOf="parent"
-        android:ems="10"
-        android:text="Baby Yoda"
-        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:contentDescription="@string/song_cover_desc"
         />
 
     <TextView
-        android:id="@+id/tCurrentUser"
+        android:id="@+id/tvSongTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/song_title"
+        app:layout_constraintTop_toBottomOf="@id/ivSongCover"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Baby Yoda"
-        android:ems="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+    <TextView
+        android:id="@+id/tvSongArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSongTitle"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/song_artist"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         />
 
     <TextView
+        android:id="@+id/tvSongCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stranger"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSongArtist"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="30sp"
-        />
+        android:text="@string/song_play_count"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvSongCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+
+        <ImageButton
+            android:id="@+id/ibPrev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_previous"
+            android:scaleType="fitCenter"
+            />
+
+        <ImageButton
+            android:id="@+id/ivPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play"
+            android:scaleType="fitCenter"
+            />
+
+        <ImageButton
+            android:id="@+id/ivNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_next"
+            />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
