@@ -20,11 +20,9 @@ class MainActivity : AppCompatActivity() {
             changeUserClick(changeUserBtn)
         }
 
-        val tvSongPlayCount = findViewById<TextView>(R.id.tvSongCount)
-        tvSongPlayCount.text = getString(R.string.song_play_count, numSongPlays)
+        findViewById<TextView>(R.id.tvSongCount).text = getString(R.string.song_play_count, numSongPlays)
 
-        val updateSongCount = findViewById<ImageButton>(R.id.ibPlay)
-        updateSongCount.setOnClickListener {
+        findViewById<ImageButton>(R.id.ibPlay).setOnClickListener {
             incrementPlayCount()
         }
 
@@ -34,6 +32,26 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.ibNext).setOnClickListener {
             displayToast(getString(R.string.skip_next))
+        }
+
+        findViewById<ImageView>(R.id.ivSongCover).setOnLongClickListener {
+            toggleSongCountColor()
+            true
+        }
+    }
+
+    /**
+     * Toggles the song title color between black and lavender when the cover image is long clicked
+     */
+    private fun toggleSongCountColor() {
+        val songTitle = findViewById<TextView>(R.id.tvSongCount)
+        val currentColor = songTitle.currentTextColor
+        val black = getColor(R.color.black)
+        val lavender = getColor(R.color.purple_200)
+        if (currentColor == black) {
+            songTitle.setTextColor(lavender)
+        } else {
+            songTitle.setTextColor(black)
         }
     }
 

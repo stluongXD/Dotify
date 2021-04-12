@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/app_padding"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -14,15 +14,18 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
         >
+
         <EditText
             android:id="@+id/eCurrentUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:text="@string/placeholder_user"
             android:visibility="gone"
             android:inputType="text"
-            android:layout_weight="1"
+            android:textSize="@dimen/small_text"
+            android:layout_weight="3"
+            android:autofillHints="no"
+            android:hint="@string/new_user"
             />
 
         <TextView
@@ -30,8 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/placeholder_user"
-            android:ems="10"
-            android:layout_weight="1"
+            android:textSize="@dimen/small_text"
+            android:layout_weight="3"
+            android:textColor="@color/black"
             />
 
         <Button
@@ -44,8 +48,8 @@
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/userHeaderBarrier"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/no_dp"
+        android:layout_height="@dimen/no_dp"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="userHeaderLayout" />
 
@@ -53,6 +57,7 @@
         android:id="@+id/ivSongCover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/medium_padding"
         android:src="@drawable/strangers_cover_art"
         app:layout_constraintTop_toBottomOf="@id/userHeaderBarrier"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +74,9 @@
         app:layout_constraintTop_toBottomOf="@id/ivSongCover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:paddingTop="@dimen/small_padding"
+        android:textSize="@dimen/large_text"
+        android:textColor="@color/black"
         />
     <TextView
         android:id="@+id/tvSongArtist"
@@ -81,7 +88,8 @@
         android:maxLines="1"
         android:ellipsize="end"
         android:text="@string/song_artist"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/black"
         />
 
     <TextView
@@ -91,14 +99,20 @@
         app:layout_constraintTop_toBottomOf="@id/tvSongArtist"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/song_play_count"/>
+        android:textSize="@dimen/medium_text"
+        android:paddingTop="@dimen/large_padding"
+        android:text="@string/song_play_count"
+        android:textColor="@color/black"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvSongCount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="@dimen/large_padding"
+        >
 
         <ImageButton
             android:id="@+id/ibPrev"

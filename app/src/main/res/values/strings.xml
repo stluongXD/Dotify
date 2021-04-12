@@ -12,4 +12,5 @@
     <string name="next_desc">Plays next song</string>
     <string name="skip_prev">Skipping to previous track</string>
     <string name="skip_next">Skipping to next track</string>
+    <string name="new_user">New User</string>
 </resources>
