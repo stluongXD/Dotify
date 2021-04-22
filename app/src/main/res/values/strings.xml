@@ -16,4 +16,5 @@
     <string name="selected_song">"%1$s - %2$s"</string>
     <string name="shuffle">Shuffle</string>
     <string name="album_cover">Album Cover</string>
+    <string name="song_list_title">All Songs</string>
 </resources>

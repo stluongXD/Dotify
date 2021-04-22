@@ -7,59 +7,13 @@
     android:padding="@dimen/app_padding"
     tools:context=".PlayerActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/userHeaderLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        >
-
-        <EditText
-            android:id="@+id/eCurrentUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholder_user"
-            android:visibility="gone"
-            android:inputType="text"
-            android:textSize="@dimen/small_text"
-            android:layout_weight="3"
-            android:autofillHints="no"
-            android:hint="@string/new_user"
-            />
-
-        <TextView
-            android:id="@+id/tCurrentUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholder_user"
-            android:textSize="@dimen/small_text"
-            android:layout_weight="3"
-            android:textColor="@color/black"
-            />
-
-        <Button
-            android:id="@+id/btChangeUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_user"
-            android:layout_weight="1"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/userHeaderBarrier"
-        android:layout_width="@dimen/no_dp"
-        android:layout_height="@dimen/no_dp"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="userHeaderLayout" />
-
     <ImageView
         android:id="@+id/ivSongCover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/large_cover"
+        android:layout_height="@dimen/large_cover"
         android:paddingTop="@dimen/medium_padding"
         android:src="@drawable/strangers_cover_art"
-        app:layout_constraintTop_toBottomOf="@id/userHeaderBarrier"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="1:1"
@@ -74,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/ivSongCover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingTop="@dimen/small_padding"
+        android:paddingTop="@dimen/large_padding"
         android:textSize="@dimen/large_text"
         android:textColor="@color/black"
         />

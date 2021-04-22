@@ -8,4 +8,6 @@
     <dimen name="medium_padding">10dp</dimen>
     <dimen name="large_padding">15dp</dimen>
     <dimen name="no_dp">0dp</dimen>
+    <dimen name="small_cover">50dp</dimen>
+    <dimen name="large_cover">300dp</dimen>
 </resources>

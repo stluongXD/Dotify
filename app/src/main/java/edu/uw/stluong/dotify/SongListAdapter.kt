@@ -30,9 +30,9 @@ class SongListAdapter(private var listOfSong: List<Song>): RecyclerView.Adapter<
         }
     }
 
+
     fun updateSong(updatedSongList: List<Song>) {
         listOfSong = updatedSongList
         notifyDataSetChanged()
     }
-
 }

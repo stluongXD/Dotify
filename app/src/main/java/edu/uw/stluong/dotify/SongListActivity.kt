@@ -9,14 +9,14 @@ import edu.uw.stluong.dotify.databinding.ActivitySongListBinding
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
-    private var allSongs = SongDataProvider.getAllSongs()
+    private var allSongs: List<Song> = SongDataProvider.getAllSongs()
     private lateinit var currentSong: Song
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
         allSongs = SongDataProvider.getAllSongs()
-
+        title = getString(R.string.song_list_title)
         with (binding) {
             val adapter = SongListAdapter(allSongs)
             rvSongs.adapter = adapter
@@ -36,8 +36,4 @@ class SongListActivity : AppCompatActivity() {
         binding.tvSelectedSong.text = getString(R.string.selected_song, songTitle, artist)
         binding.llMiniPlayer.visibility = View.VISIBLE
     }
-
-
-
-
 }

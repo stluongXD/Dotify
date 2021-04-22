@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import com.ericchee.songdataprovider.Song
 import edu.uw.stluong.dotify.databinding.ActivityPlayerBinding
@@ -22,14 +21,11 @@ fun navigateToPlayerActivity(context: Context ,currentSong: Song) {
 
 class PlayerActivity : AppCompatActivity() {
 
-    private var isEditingUser = false
-    private var currentUser = "Baby Yoda"
     private var numSongPlays = Random.nextInt(100, 10000)
     private lateinit var binding: ActivityPlayerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_player)
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         with(binding) {
@@ -40,7 +36,6 @@ class PlayerActivity : AppCompatActivity() {
                 tvSongArtist.text = givenSong.artist
             }
 
-            btChangeUser.setOnClickListener { changeUserClick(btChangeUser) }
             tvSongCount.text = getString(R.string.song_play_count, numSongPlays)
             ibPlay.setOnClickListener { incrementPlayCount() }
             ibPrev.setOnClickListener { displayToast(getString(R.string.skip_prev)) }
@@ -50,6 +45,13 @@ class PlayerActivity : AppCompatActivity() {
                 true
             }
         }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        // handle whatever you want to do when Up button is pressed
+        finish()
+        return super.onSupportNavigateUp()
     }
 
     /**
@@ -67,29 +69,6 @@ class PlayerActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Swaps the text between "CHANGE USER" and "APPLY" and allows the user to change the current
-     * user of the app
-     * @param changeUserBtn the button we want to run this function when the button is clicked
-     */
-    private fun changeUserClick(changeUserBtn: Button) {
-        isEditingUser = !isEditingUser
-        val textCurrentUser = findViewById<TextView>(R.id.tCurrentUser)
-        val editCurrentUserHandle = findViewById<EditText>(R.id.eCurrentUser)
-
-        if (isEditingUser) {
-            editCurrentUserHandle.setText(currentUser)
-            changeUserBtn.text = getString(R.string.apply)
-            textCurrentUser.visibility = View.GONE
-            editCurrentUserHandle.visibility = View.VISIBLE
-        } else {
-            currentUser = editCurrentUserHandle.text.toString()
-            textCurrentUser.text = currentUser
-            changeUserBtn.text = getString(R.string.change_user)
-            textCurrentUser.visibility = View.VISIBLE
-            editCurrentUserHandle.visibility = View.GONE
-        }
-    }
 
     /**
      * Increments the counter of the times the current song is played. Updates the display on the
