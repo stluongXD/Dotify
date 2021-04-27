@@ -4,7 +4,7 @@
     <string name="change_user">CHANGE USER</string>
     <string name="song_title">Strangers</string>
     <string name="apply">APPLY</string>
-    <string name="song_cover_desc">Two planets in the dark blue sky with the words "Seven Lions" at the top left corner</string>
+    <string name="song_cover_desc">Album Cover of current song</string>
     <string name="song_artist">Seven Lions featuring Tove Lo, Myon, Shane 54</string>
     <string name="song_play_count">%d plays</string>
     <string name="prev_desc">Plays previous song</string>
@@ -17,4 +17,17 @@
     <string name="shuffle">Shuffle</string>
     <string name="album_cover">Album Cover</string>
     <string name="song_list_title">All Songs</string>
+    <string name="settings">SETTINGS</string>
+    <string name="profile">PROFILE</string>
+    <string name="stats">PROFILE STATISTICS</string>
+    <string name="about">ABOUT</string>
+    <string name="current_user">Baby Yoda</string>
+    <string name="profile_pic_desc">Profile Picture</string>
+    <string name="email">Email: randomEmail@gmail.com</string>
+    <string name="joined_date">Joined: January 1st 2020</string>
+    <string name="age">Age: 20 years old</string>
+    <string name="creator">Creator: Steven Luong</string>
+    <string name="github">Github: github.com/stluongXD</string>
+    <string name="version">Version: %1$s</string>
+    <string name="play_count_stats">Play count: %d</string>
 </resources>

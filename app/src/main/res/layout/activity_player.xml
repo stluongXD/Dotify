@@ -7,13 +7,22 @@
     android:padding="@dimen/app_padding"
     tools:context=".PlayerActivity">
 
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/settings"
+        />
+
     <ImageView
         android:id="@+id/ivSongCover"
         android:layout_width="@dimen/large_cover"
         android:layout_height="@dimen/large_cover"
         android:paddingTop="@dimen/medium_padding"
         android:src="@drawable/strangers_cover_art"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSettings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="1:1"

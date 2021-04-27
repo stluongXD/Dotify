@@ -29,13 +29,6 @@ class PlayerActivity : AppCompatActivity() {
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         with(binding) {
-            val givenSong = intent.getParcelableExtra<Song>(SONG_KEY)
-            if (givenSong != null) {
-                ivSongCover.setImageResource(givenSong.largeImageID)
-                tvSongTitle.text = givenSong.title
-                tvSongArtist.text = givenSong.artist
-            }
-
             tvSongCount.text = getString(R.string.song_play_count, numSongPlays)
             ibPlay.setOnClickListener { incrementPlayCount() }
             ibPrev.setOnClickListener { displayToast(getString(R.string.skip_prev)) }
@@ -43,6 +36,14 @@ class PlayerActivity : AppCompatActivity() {
             ivSongCover.setOnLongClickListener {
                 toggleSongCountColor()
                 true
+            }
+
+            val givenSong = intent.getParcelableExtra<Song>(SONG_KEY)
+            if (givenSong != null) {
+                ivSongCover.setImageResource(givenSong.largeImageID)
+                tvSongTitle.text = givenSong.title
+                tvSongArtist.text = givenSong.artist
+                btnSettings.setOnClickListener { navigateToSettingsActivity(this@PlayerActivity, givenSong, numSongPlays)}
             }
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
