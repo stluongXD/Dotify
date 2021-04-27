@@ -10,6 +10,7 @@ import edu.uw.stluong.dotify.databinding.ActivityPlayerBinding
 import kotlin.random.Random
 
 private const val SONG_KEY = "givenSong"
+private const val COUNT_VALUE_KEY = "COUNT_VALUE_KEY"
 fun navigateToPlayerActivity(context: Context ,currentSong: Song) {
     val intent = Intent(context, PlayerActivity::class.java)
     val bundle = Bundle().apply {
@@ -21,12 +22,17 @@ fun navigateToPlayerActivity(context: Context ,currentSong: Song) {
 
 class PlayerActivity : AppCompatActivity() {
 
-    private var numSongPlays = Random.nextInt(100, 10000)
+    private var numSongPlays = 0
     private lateinit var binding: ActivityPlayerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
+        if (savedInstanceState != null) {
+            numSongPlays = savedInstanceState.getInt(COUNT_VALUE_KEY, 0)
+        } else {
+            numSongPlays = Random.nextInt(100, 10000)
+        }
 
         with(binding) {
             tvSongCount.text = getString(R.string.song_play_count, numSongPlays)
@@ -47,6 +53,11 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(COUNT_VALUE_KEY, numSongPlays)
+        super.onSaveInstanceState(outState)
     }
 
     override fun onSupportNavigateUp(): Boolean {

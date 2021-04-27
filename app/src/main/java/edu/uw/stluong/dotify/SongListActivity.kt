@@ -7,6 +7,7 @@ import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.stluong.dotify.databinding.ActivitySongListBinding
 
+private const val CURRENT_SONG = "currentSong"
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
     private var allSongs: List<Song> = SongDataProvider.getAllSongs()
@@ -27,6 +28,15 @@ class SongListActivity : AppCompatActivity() {
             adapter.onSongClickListener = {currentSongObj: Song -> changeSelectedSong(currentSongObj)}
             tvSelectedSong.setOnClickListener { navigateToPlayerActivity(this@SongListActivity, currentSong)}
         }
+        if (savedInstanceState != null) {
+            currentSong = savedInstanceState.getParcelable(CURRENT_SONG) ?: return
+            changeSelectedSong(currentSong)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelable(CURRENT_SONG, currentSong)
+        super.onSaveInstanceState(outState)
     }
 
     private fun changeSelectedSong(currentSongObj: Song) {
