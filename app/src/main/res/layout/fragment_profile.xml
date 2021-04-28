@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/ivProfilePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/strangers_cover_art"
+        android:layout_width="@dimen/large_cover"
+        android:layout_height="@dimen/large_cover"
+        android:src="@drawable/ash"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

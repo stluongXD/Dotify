@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.ericchee.songdataprovider.Song
 import edu.uw.stluong.dotify.databinding.ActivitySettingsBinding
 
@@ -34,5 +36,8 @@ class SettingsActivity : AppCompatActivity() {
         if (extras != null) {
             navController.setGraph(R.navigation.nav_graph, intent.extras)
         }
+        setupActionBarWithNavController(navController)
     }
+
+    override fun onSupportNavigateUp() = navController.navigateUp()
 }
