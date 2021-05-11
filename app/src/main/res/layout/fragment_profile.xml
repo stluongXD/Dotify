@@ -29,10 +29,10 @@
         />
 
     <TextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:text="@string/username"
         app:layout_constraintTop_toBottomOf="@id/tvUser"
         app:layout_constraintStart_toStartOf="parent"
         android:paddingTop="@dimen/large_padding"
@@ -46,7 +46,7 @@
         android:text="@string/joined_date"
         android:textSize="@dimen/medium_text"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

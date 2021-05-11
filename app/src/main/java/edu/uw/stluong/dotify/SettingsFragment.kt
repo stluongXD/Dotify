@@ -1,19 +1,24 @@
 package edu.uw.stluong.dotify
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import edu.uw.stluong.dotify.Users.UserRepository
 import edu.uw.stluong.dotify.databinding.FragmentSettingsBinding
+import kotlinx.coroutines.launch
 
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private val safeArgs: SettingsFragmentArgs by navArgs()
     private val navController by lazy { findNavController() }
+    private lateinit var userRepository: UserRepository
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -21,8 +26,16 @@ class SettingsFragment : Fragment() {
         with(binding) {
             val currentSong = safeArgs.givenSong
             val songCount = safeArgs.songCounter
-            btnProfile.setOnClickListener{
-                navController.navigate(NavGraphDirections.actionGlobalProfileFragment())
+            lifecycleScope.launch {
+                runCatching {
+                    val currentUser = userRepository.getUser()
+                    btnProfile.setOnClickListener{
+                        navController.navigate(NavGraphDirections.actionGlobalProfileFragment(currentUser))
+                    }
+                }.onFailure {
+                    tvErrorMsg.visibility = View.VISIBLE
+                    btnProfile.visibility = View.GONE
+                }
             }
             btnProfileStats.setOnClickListener{
                 navController.navigate(NavGraphDirections.actionGlobalStatisticsFragment(currentSong, songCount))
@@ -32,5 +45,11 @@ class SettingsFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        val dotifyApp = context.applicationContext as DotifyApplication
+        userRepository = dotifyApp.userRepository
+        super.onAttach(context)
     }
 }

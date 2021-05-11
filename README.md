@@ -1,18 +1,15 @@
-# HW3 - Fragments, Activity Lifecycle, & Rotation
+# HW3 - Application, JSON parsing & Network Requests
 # By Steven Luong
 This music app can ...
-- Support landscape view of the app
-- Play count is preserved when app is switched between various phone orientation
-- Used fragments for settings which shows information about the user, play count of song, and app developer
-
-## Extra Credit
-I completed these extra credit
-- #1 Every Fragment (other than SettingsFragment) has a Up/back button in the top right corner. Clicking
-will take you back to the previous fragment
+- Use the application class to store information
+    - The song list is stored in the application class
+    - when the user clicks the shuffle button, the order of songs in the list changes
+- The app makes an HTTP GET request for user information
+    - If the request fails, the Settings fragment will remove the visibility of the profile button and replace it with a message stating that the user info request failed
+- The user info json from the GET request is parsed into a User data object
+- The User Object information is displayed on the Profile fragment
+- The Profile fragment also displays the image of the user using Coil
 
 ## Screenshots
-<img src="./imgs/hw3a.png" alt="Landscape view of player activity" height="300"/>
-<img src="./imgs/hw3b.png" alt="Settings Fragment" height="500"/>
-<img src="./imgs/hw3c.png" alt="Profile Fragment" height="500"/>
-<img src="./imgs/hw3d.png" alt="Statistics Fragment" height="500"/>
-<img src="./imgs/hw3e.png" alt="About Fragment" height="500"/>
+<img src="./imgs/hw4a.png" alt="HTTP GET request failed" height="500"/>
+<img src="./imgs/hw4b.png" alt="User GET requst information on profile fragment" height="500"/>

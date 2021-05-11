@@ -21,13 +21,14 @@
     <string name="profile">PROFILE</string>
     <string name="stats">PROFILE STATISTICS</string>
     <string name="about">ABOUT</string>
-    <string name="current_user">Ash Ketchum</string>
+    <string name="current_user">%1$s %2$s</string>
     <string name="profile_pic_desc">Profile Picture</string>
-    <string name="email">Email: pkmnMaster@gmail.com</string>
+    <string name="username">Username: %1$s</string>
     <string name="joined_date">Joined: January 1st 2020</string>
     <string name="age">Age: 10 years old</string>
     <string name="creator">Creator: Steven Luong</string>
     <string name="github">Github: github.com/stluongXD</string>
     <string name="version">Version: %1$s</string>
     <string name="play_count_stats">Play count: %d</string>
+    <string name="user_load_failure">Current User Information is unable to load</string>
 </resources>
