@@ -25,7 +25,6 @@ class PlayerActivity : AppCompatActivity() {
 
     private var numSongPlays = 0
     private lateinit var binding: ActivityPlayerBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }

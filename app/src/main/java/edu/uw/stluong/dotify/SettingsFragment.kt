@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import edu.uw.stluong.dotify.Users.UserRepository
 import edu.uw.stluong.dotify.databinding.FragmentSettingsBinding
+import edu.uw.stluong.dotify.manager.SongNotificationManager
 import kotlinx.coroutines.launch
 
 
@@ -19,6 +20,8 @@ class SettingsFragment : Fragment() {
     private val safeArgs: SettingsFragmentArgs by navArgs()
     private val navController by lazy { findNavController() }
     private lateinit var userRepository: UserRepository
+    private val dotifyApp by lazy {requireActivity().application as DotifyApplication }
+    private val songNotifier: SongNotificationManager by lazy {dotifyApp.songNotificationManager}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -43,6 +46,14 @@ class SettingsFragment : Fragment() {
             btnAbout.setOnClickListener {
                 navController.navigate(NavGraphDirections.actionGlobalAboutFragment())
             }
+            refresh.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    songNotifier.notifySong()
+                } else {
+                    songNotifier.stopPeriodicallyNotifying()
+                }
+            }
+
         }
         return binding.root
     }
